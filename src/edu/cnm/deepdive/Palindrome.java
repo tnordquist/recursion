@@ -8,11 +8,15 @@ public class Palindrome {
     // TODO Assign simpleCandidate from candidate, stripping out spaces & punctuation.
     return testSimple(simpleCandidate);
   }
-
-
+  
   private static boolean testSimple(String candidate) {
-    return (candidate.length() <= 1) || (
-        candidate.charAt(0) == candidate.charAt(candidate.length() - 1)
-            && testSimple(candidate.substring(1, candidate.length() - 1)));
+    boolean result = true;
+    for (int i = 0, j = candidate.length() - 1; i < j; ++i, --j) {
+      if (candidate.charAt(i) != candidate.charAt(candidate.length() - 1 - i)) {
+        result = false;
+        break;
+      }
+    }
+    return result;
   }
 }
